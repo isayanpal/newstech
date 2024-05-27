@@ -4,7 +4,7 @@ NewsTech is a web application designed to fetch and display the latest technolog
 
 ## Demo
 
-Live link -
+Live link - https://newstech-v1.vercel.app/
 
 ## Tech Stack
 
@@ -22,6 +22,9 @@ Live link -
 - Axios (HTTP Requests)
 
 ## Screenshots
+![image](https://github.com/isayanpal/newstech/assets/102523492/ee25c49b-6c36-45f4-b6d1-1e9258f4bfa0)
+![image](https://github.com/isayanpal/newstech/assets/102523492/3bd569ca-4db9-492b-bcb3-3714be6b62be)
+
 
 ## Installation
 
@@ -121,5 +124,8 @@ If you want to contribute to NewsTech, please follow these steps:
    ```
 
 5. Open a pull request.
+
+## Acknowledgements
+- <a href="https://newsapi.org/"><b>News API</b></a> for providing the technology news data.
 
 ## Happy Coding ❤️
