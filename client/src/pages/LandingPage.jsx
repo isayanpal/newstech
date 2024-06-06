@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 function LandingPage() {
   return (
@@ -9,12 +9,15 @@ function LandingPage() {
         Get all your technology related news at one place
       </div>
       <div className="mt-5">
-        <Link
-          to={"/dashboard"}
-          className="w-[200px] px-6 py-4 rounded-3xl text-white bg-[#1C76FE]"
-        >
-          Get Started
-        </Link>
+        <a href="/dashboard">
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            className="w-[180px] px-3 py-6 rounded-full text-white bg-[#1C76FE]"
+          >
+            Get Started
+          </motion.button>
+        </a>
       </div>
     </div>
   );
