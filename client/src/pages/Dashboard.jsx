@@ -1,22 +1,39 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import NewsCard from "../components/NewsCard";
+import Loader from "../components/loader/Loader";
 
 function Dashboard() {
-  const [articles, setArticles] = useState([]);
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${API_BASE_URL}/tech-headlines`);
-        setArticles(response.data);
-      } catch (error) {
-        console.error("Error fetching the tech headlines:", error);
-      }
-    };
-    fetchData();
-  }, []);
+  const fetchArticles = async () => {
+    const response = await axios.get(`${API_BASE_URL}/tech-headlines`);
+    return response.data;
+  };
+
+  const {
+    data: articles = [],
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["newsData"],
+    queryFn: fetchArticles,
+  });
+
+  if (isLoading) {
+    return (
+      <span>
+        <Loader />
+      </span>
+    );
+  }
+
+  if (error) {
+    return (
+      <span className="text-white">An error has occurred: {error.message}</span>
+    );
+  }
+
   return (
     <div className="p-6 min-h-screen">
       <h1 className="text-3xl font-bold mb-6 cursor-pointer">Headlines</h1>
