@@ -20,28 +20,25 @@ function Dashboard() {
     queryFn: fetchArticles,
   });
 
-  if (isLoading) {
-    return (
-      <span>
-        <Loader />
-      </span>
-    );
-  }
-
-  if (error) {
-    return (
-      <span className="text-white">An error has occurred: {error.message}</span>
-    );
-  }
-
   return (
     <div className="p-6 min-h-screen">
       <h1 className="text-3xl font-bold mb-6 cursor-pointer">Headlines</h1>
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-        {articles.slice(0, 12).map((item, index) => (
-          <NewsCard key={index} title={item.title} url={item.url} />
-        ))}
-      </div>
+
+      {isLoading ? (
+        <div className="flex justify-center">
+          <Loader />
+        </div>
+      ) : error ? (
+        <span className="text-white">
+          An error has occurred: {error.message}
+        </span>
+      ) : (
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {articles.slice(0, 12).map((item, index) => (
+            <NewsCard key={index} title={item.title} url={item.url} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
